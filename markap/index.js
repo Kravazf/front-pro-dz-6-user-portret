@@ -1,77 +1,47 @@
 yearOfBirth = parseFloat(prompt('Enter the year of birth'));
+city = prompt('In which city do you live?');
+favoriteSport = prompt('What is your favorite sport?');
 
-if (isNaN(yearOfBirth)) {
-  alert(`
-    "Шкода, що Ви не захотіли ввести свій рік народження"
-  `);
+resultAge = 'Your age is ';
+resultCity = 'You live in ';
+resultFavoriteSport = 'Cool! Do you want to become ';
+
+if(!yearOfBirth || isNaN(yearOfBirth)) {
+	resultAge = 'It\'s a pity that you didn\'t want to enter your date of birth!'
 } else {
-  theCity = prompt('In which city do you live?');
+  	resultAge += new Date().getFullYear() - yearOfBirth;
+}
 
-  if (theCity === null) {
-    alert(`
-      "Шкода, що Ви не захотіли ввести назву міста"
-    `)
-  } else {
-    kindOfSport = prompt('What is your favorite sport?');
+if (!city) {
+  	resultCity = 'It\'s a pity that you didn\'t want to enter your city of residence!';
+}
+ else if (city.toLowerCase() === 'kyiv') {
+  	resultCity += `the capital of Ukraine ${city[0].toUpperCase() + city.slice(1)}`;
+} else if (city.toLowerCase() === 'washington') {
+  	resultCity += `the capital of USA in ${city[0].toUpperCase() + city.slice(1)}`;
+} else if (city.toLowerCase() === 'london') {
+  	resultCity += `the capital of UK ${city[0].toUpperCase() + city.slice(1)}`;
+} else {
+	resultCity += `${city[0].toUpperCase() + city.slice(1)}`;
+}
 
-    if (kindOfSport === null) {
-      alert(`
-        "Шкода, що Ви не захотіли ввести свій улюблений вид спорту"
-      `);
-    } else if (kindOfSport.toLowerCase() === "football") {
-      ageOfTheUser = new Date().getFullYear() - yearOfBirth;
-      athlete = "Мессі";
-      alert(`
-          "Your age : ${ageOfTheUser}"
-          "You live in the capital of Ukraine."  
-          "Круто! Хочеш стати ${athlete}?"
-        `)
-    } else if (kindOfSport.toLowerCase() === "box") {
-      ageOfTheUser = new Date().getFullYear() - yearOfBirth;
-      athlete = "Усік";
-      alert(`
-          "Your age : ${ageOfTheUser}"
-          "You live in the capital of Ukraine."  
-          "Круто! Хочеш стати як ${athlete}?"
-        `)
-    } else if (kindOfSport.toLowerCase() === "tennis") {
-      ageOfTheUser = new Date().getFullYear() - yearOfBirth;
-      athlete = "Світоліна";
-      alert(`
-          "Your age : ${ageOfTheUser}"
-          "You live in the capital of Ukraine"  
-          "Круто! Хочеш стати як ${athlete}?"
-        `)
-    } else {
-      ageOfTheUser = new Date().getFullYear() - yearOfBirth;
+if (!favoriteSport) {
+  	resultFavoriteSport = 'It\'s a pity that you didn\'t want to enter your favorite sport!';
+} else if (favoriteSport.toLowerCase() === 'box') {
+  	resultFavoriteSport += `Oleksandr Usik!`
+} else if (favoriteSport.toLowerCase() === 'football') {
+  	resultFavoriteSport += `Lionel Messi!`
+} else if (favoriteSport.toLowerCase() === 'tennis') {
+  	resultFavoriteSport += `Elina Svitolina!`
+} else {
+  	resultFavoriteSport += `a Pro!`
+}
 
-      if (theCity.toLowerCase() === "kyiv") {
-        alert(`
-          "Your age : ${ageOfTheUser}"
-          "You live in the capital of Ukraine"
-        `)
-      } else if (theCity.toLowerCase() === 'washington') {
-        alert(`
-          "Your age : ${ageOfTheUser}"
-          "You live in the capital of USA."
-        `)
-      } else if (theCity.toLowerCase() === 'london') {
-        alert(`
-          "Your age : ${ageOfTheUser}"
-          "You live in the capital of the United Kingdom"
-        `)
-      } else {
-        alert(`
-          Your age : ${ageOfTheUser}
-          "You live in ${theCity[0].toUpperCase() + theCity.slice(1)}."
-        `)
-      }
-    }
-  }
-} 
-
-
-
+alert(`
+${resultAge}
+${resultCity}
+${resultFavoriteSport}
+`);
 
 
 
